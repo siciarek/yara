@@ -1,19 +1,15 @@
 <?php
+/**
+ * Application Front Controller
+ * @package yara
+ */
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-ini_set('include_path', dirname(__FILE__) . DIRECTORY_SEPARATOR . 'lib');
-
-require_once 'RestController.class.php';
-require_once 'SimpleRestController.class.php';
-require_once 'Serializer.class.php';
-require_once 'JsonSerializer.class.php';
-require_once 'XmlSerializer.class.php';
-
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'Config.class.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri    = $_SERVER['REQUEST_URI'];
-
 
 // AJAX call header: "X-Requested-With", "XMLHttpRequest"
 

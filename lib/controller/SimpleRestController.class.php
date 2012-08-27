@@ -4,10 +4,6 @@
  */
 class SimpleRestController extends RestController
 {
-	const DBHOST = 'localhost';
-	const DBNAME = 'rest_area';
-	const DBUSER = 'root';
-	const DBPASS = '';
 
 	/**
 	 * if set to true deleting entire collection ($this->processDeleteCollection())
@@ -28,8 +24,8 @@ class SimpleRestController extends RestController
 			),
 		);
 
-		$this->db = mysql_connect(self::DBHOST, self::DBUSER, self::DBPASS);
-		mysql_select_db(self::DBNAME);
+		$this->db = mysql_connect(Config::DBHOST, Config::DBUSER, Config::DBPASS);
+		mysql_select_db(Config::DBNAME);
 		mysql_query('SET NAMES utf8');
 
 		if (!$this->db) {
@@ -45,7 +41,7 @@ class SimpleRestController extends RestController
 		$fieldsNames = array();
 				
 		$fields = mysql_list_fields(
-			self::DBNAME,
+			Config::DBNAME,
 			$this->supportedResources[$this->resource]['table'],
 			$this->db
 		);
@@ -189,7 +185,7 @@ class SimpleRestController extends RestController
 		$fieldsNames = array();
 		
 		$fields = mysql_list_fields(
-			self::DBNAME,
+			Config::DBNAME,
 			$this->supportedResources[$this->resource]['table'],
 			$this->db
 		);
